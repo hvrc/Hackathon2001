@@ -1,0 +1,44 @@
+﻿@model Hackathon2001.Models.HackathonInvite
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/styles.css" rel="stylesheet">
+    <title>RsvpForm</title>
+</head>
+<body>
+    <div class="container mt-5">
+        @using (Html.BeginForm())
+        {
+            <h1>Rsvp Form</h1>
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label for="Name">Your Name:</label>
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="Email">Your Email:</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="Phone">Your Phone:</label>
+                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="WillAttend">Will you attend?</label>
+                @Html.DropDownListFor(x => x.WillAttend, new List<SelectListItem>
+            {
+            new SelectListItem { Text = "Yes, I'll be there", Value = bool.TrueString },
+            new SelectListItem { Text = "No, I can't come", Value = bool.FalseString }
+            }, "Choose an option", new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Submit RSVP</button>
+        }
+    </div>
+</body>
+</html>

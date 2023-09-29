@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/styles.css" rel="stylesheet">
+    <title>Index</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Welcome to our Exciting Party!</h1>
+        <p>We're going to have an exciting party, and you're invited!</p>
+        @Html.ActionLink("RSVP Now", "RsvpForm", null, new { @class = "btn btn-primary" })
+    </div>
+</body>
+</html>

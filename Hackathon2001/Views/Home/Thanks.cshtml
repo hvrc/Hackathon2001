@@ -1,0 +1,31 @@
+﻿@model Hackathon2001.Models.HackathonInvite
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/styles.css" rel="stylesheet">
+    <title>Thanks</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Thank you, @Model.Name!</h1>
+        @if (Model.WillAttend == true)
+        {
+            <div class="alert alert-success">
+                <p>It's great that you're coming. The drinks are already in the fridge!</p>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <p>Sorry to hear that you can't make it, but thanks for letting us know.</p>
+            </div>
+        }
+    </div>
+</body>
+</html>
