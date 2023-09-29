@@ -1,6 +1,20 @@
-﻿@model Hackathon2001.Models.HackathonInvite
+﻿@model Hackathon2000.Models.HackathonInvite
 @{
     Layout = null;
+}
+
+@{
+    var technicalInterestNames = new Dictionary<Hackathon2000.Models.TechnicalInterest, string>
+    {
+        { Hackathon2000.Models.TechnicalInterest.IoT, "Internet of Things" },
+        { Hackathon2000.Models.TechnicalInterest.Cognitive, "Cognitive Computing" },
+        { Hackathon2000.Models.TechnicalInterest.Wearable, "Wearable Computing" },
+        { Hackathon2000.Models.TechnicalInterest.AR_VR, "Augmented / Virtual Reality" }
+    };
+
+    string selectedInterest = technicalInterestNames.ContainsKey(Model.Interest)
+        ? technicalInterestNames[Model.Interest]
+        : "Select a technical interest";
 }
 
 <!DOCTYPE html>
@@ -8,24 +22,25 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/styles.css" rel="stylesheet">
-    <title>Thanks</title>
+    @*     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" /> *@
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <title>Thanks!</title>
 </head>
-<body>
-    <div class="container mt-5">
-        <h1>Thank you, @Model.Name!</h1>
-        @if (Model.WillAttend == true)
-        {
-            <div class="alert alert-success">
-                <p>It's great that you're coming. The drinks are already in the fridge!</p>
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>Sorry to hear that you can't make it, but thanks for letting us know.</p>
-            </div>
-        }
+<body class="d-flex align-items-center justify-content-center vh-100">
+    <div class="container text-center">
+        <h1>Thank you, @Model.Name!</h1> <br>
+        <div class="lead">
+            @if (Model.WillAttend == true)
+            {
+                <p class="text-success">It's great to hear that you're coming!</p>
+                <p>You were enrolled in the @selectedInterest track of the competition.</p>
+            }
+            else
+            {
+                <p class="text-danger">Sorry to hear that you can't make it, but thanks for letting us know.</p>
+            }
+        </div>
     </div>
 </body>
 </html>
