@@ -1,4 +1,4 @@
-﻿@model Hackathon2000.Models.HackathonInvite
+﻿@model Hackathon2001.Models.HackathonInvite
 
 @{
     Layout = null;
@@ -42,13 +42,13 @@
                                 <label for="Interest">Your technical interest:</label>
                                 <!-- Create a dropdown list for technical interests -->
                                 @{
-                                    var enumValues = Enum.GetValues(typeof(Hackathon2000.Models.TechnicalInterest));
+                                    var enumValues = Enum.GetValues(typeof(Hackathon2001.Models.TechnicalInterest));
                                     var selectListItems = new List<SelectListItem>();
                                     foreach (var value in enumValues)
                                     {
                                         selectListItems.Add(new SelectListItem
                                         {
-                                            Text = Hackathon2000.Models.TechnicalInterestDisplayNames.DisplayNames[(TechnicalInterest)value],
+                                            Text = Hackathon2001.Models.TechnicalInterestDisplayNames.DisplayNames[(TechnicalInterest)value],
                                             Value = value.ToString()
                                         });
                                     }

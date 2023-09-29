@@ -1,17 +1,19 @@
-﻿@model Hackathon2000.Models.HackathonInvite
+﻿@model Hackathon2001.Models.HackathonInvite
 @{
     Layout = null;
 }
 
 @{
-    var technicalInterestNames = new Dictionary<Hackathon2000.Models.TechnicalInterest, string>
+    // Map technical interest enum values to their display names
+    var technicalInterestNames = new Dictionary<Hackathon2001.Models.TechnicalInterest, string>
     {
-        { Hackathon2000.Models.TechnicalInterest.IoT, "Internet of Things" },
-        { Hackathon2000.Models.TechnicalInterest.Cognitive, "Cognitive Computing" },
-        { Hackathon2000.Models.TechnicalInterest.Wearable, "Wearable Computing" },
-        { Hackathon2000.Models.TechnicalInterest.AR_VR, "Augmented / Virtual Reality" }
+        { Hackathon2001.Models.TechnicalInterest.IoT, "Internet of Things" },
+        { Hackathon2001.Models.TechnicalInterest.Cognitive, "Cognitive Computing" },
+        { Hackathon2001.Models.TechnicalInterest.Wearable, "Wearable Computing" },
+        { Hackathon2001.Models.TechnicalInterest.AR_VR, "Augmented / Virtual Reality" }
     };
 
+    // Determine the selected technical interest display name
     string selectedInterest = technicalInterestNames.ContainsKey(Model.Interest)
         ? technicalInterestNames[Model.Interest]
         : "Select a technical interest";

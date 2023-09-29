@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Hackathon2000.Models;
+using Hackathon2001.Models;
 using System.Diagnostics;
 using System.Net.Mail;
 using System.Net;
 using System.Reflection;
 using System;
-using Hackathon2000.Models;
-using Hackathon2001.Models;
 
-namespace Hackathon2000.Controllers
+namespace Hackathon2001.Controllers
 {
     public class HomeController : Controller
     {
