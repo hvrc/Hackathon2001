@@ -1,4 +1,5 @@
-﻿@model Hackathon2001.Models.HackathonInvite
+﻿@model Hackathon2000.Models.HackathonInvite
+
 @{
     Layout = null;
 }
@@ -8,37 +9,70 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/styles.css" rel="stylesheet">
-    <title>RsvpForm</title>
+    @*     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" /> *@
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <title>RSVP Form</title>
 </head>
 <body>
-    <div class="container mt-5">
-        @using (Html.BeginForm())
-        {
-            <h1>Rsvp Form</h1>
-            @Html.ValidationSummary()
-            <div class="form-group">
-                <label for="Name">Your Name:</label>
-                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4>RSVP</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary()
+                            <div class="form-group">
+                                <label for="Name">Your name:</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @id = "Name" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Your email:</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @id = "Email" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Phone">Your phone:</label>
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @id = "Phone" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Interest">Your technical interest:</label>
+                                <!-- Create a dropdown list for technical interests -->
+                                @{
+                                    var enumValues = Enum.GetValues(typeof(Hackathon2000.Models.TechnicalInterest));
+                                    var selectListItems = new List<SelectListItem>();
+                                    foreach (var value in enumValues)
+                                    {
+                                        selectListItems.Add(new SelectListItem
+                                        {
+                                            Text = Hackathon2000.Models.TechnicalInterestDisplayNames.DisplayNames[(TechnicalInterest)value],
+                                            Value = value.ToString()
+                                        });
+                                    }
+                                }
+                                @Html.DropDownListFor(x => x.Interest, selectListItems, "Select a technical interest", new { @class = "form-control", @id = "Interest" })
+                            </div>
+                            <div class="form-group">
+                                <label for="Address">Your address:</label>
+                                @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @id = "Address" })
+                            </div>
+                            <div class="form-group">
+                                <label for="TwitterAccount">Your Twitter account:</label>
+                                @Html.TextBoxFor(x => x.TwitterAccount, new { @class = "form-control", @id = "TwitterAccount" })
+                            </div>
+                            <div class="text-center">
+                                <!-- Two buttons for accepting or sending regrets -->
+                                <button class="btn btn-outline-success" type="submit" name="AcceptButton" value="Accept">Accept Invitation</button>
+                                <button class="btn btn-outline-danger" type="submit" name="RegretsButton" value="Regrets">Send Regrets</button>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="Email">Your Email:</label>
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label for="Phone">Your Phone:</label>
-                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                <label for="WillAttend">Will you attend?</label>
-                @Html.DropDownListFor(x => x.WillAttend, new List<SelectListItem>
-            {
-            new SelectListItem { Text = "Yes, I'll be there", Value = bool.TrueString },
-            new SelectListItem { Text = "No, I can't come", Value = bool.FalseString }
-            }, "Choose an option", new { @class = "form-control" })
-            </div>
-            <button type="submit" class="btn btn-primary">Submit RSVP</button>
-        }
+        </div>
     </div>
 </body>
 </html>
