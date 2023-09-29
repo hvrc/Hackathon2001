@@ -7,14 +7,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/styles.css" rel="stylesheet">
+    @*     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" /> *@
+    <link href="~/Content/styles.css" rel="stylesheet" />
     <title>Home</title>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>Welcome to our Exciting Party!</h1>
-        <p>We're going to have an exciting party, and you're invited!</p>
-        @Html.ActionLink("RSVP Now", "RsvpForm", null, new { @class = "btn btn-primary" })
+    <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+        <div class="text-center mb-4">
+            <h2 class="party-heading">We're going to have a legendary Hackathon...</h2> <br>
+
+            <h3 class="text-success party-subheading">...and you are invited!</h3>
+        </div>
+
+        <div>
+            <a class="btn btn-outline-success rsvp-button mt-3" href="@Url.Action("RsvpForm")">RSVP</a>
+        </div>
     </div>
 </body>
 </html>
